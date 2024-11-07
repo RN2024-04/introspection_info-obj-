@@ -1,0 +1,14 @@
+from inspect import getmodule
+
+def introspection_info(obj):
+    type_=type(obj).__name__
+    attributes=dir(obj)
+    methods = [method for method in attributes if callable(getattr(obj, method))]
+    module=obj.__class__.__module__
+    # a={'module','methods','attributes','type'}
+    # d=[type_,attributes,methods,module]
+    z={'type':type_,'attributes':attributes,'methods':methods,'module':module}
+    return (z)
+
+number_info = introspection_info(42)
+print(number_info)
